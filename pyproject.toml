@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "vk-tests-ui-api-mobile"
+version = "0.1.0"
+description = ""
+authors = ["i.voroncova <i.voroncova@ics78.ru>"]
+readme = "README.md"
+packages = [{include = "vk_tests_ui_api_mobile"}]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+requests = "^2.29.0"
+pytest = "^7.3.1"
+voluptuous = "^0.13.1"
+pytest-voluptuous = "^1.2.0"
+curlify = "^2.2.1"
+allure-pytest = "^2.13.2"
+selene = "^2.0.0rc2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
