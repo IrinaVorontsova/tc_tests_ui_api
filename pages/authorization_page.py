@@ -1,3 +1,5 @@
+from selene import have, be
+
 from constants.read_env import ReadEnv
 from locators.web_locators import WebLocators
 
@@ -17,6 +19,20 @@ class AuthorizationPage:
         self.setup_browser.open(ReadEnv.URL)
         return self
 
+    def check_page(self, vk_header):
+        self.vk_header.should(have.text(vk_header))
+
+    def get_login(self, login):
+        self.login.should(be.blank).type(login)
+
+    def check_box_click(self):
+        self.check_box.click()
+
+    def exit_click(self):
+        self.exit.click()
+
+    def get_password(self, password):
+        self.login.should(be.blank).type(password)
 
     def _set_first_name(self, first_name):
         self.first_name.should(be.blank).type(first_name)
