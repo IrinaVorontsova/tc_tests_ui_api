@@ -6,7 +6,7 @@ from pages.authorization_page import AuthorizationPage
 
 
 class TestsVK:
-    def test_vk_Ui(self, setup_browser):
+    def test_vk_ui(self, setup_browser):
 
             with allure.step("Authorization data"):
                 user = Authorization(

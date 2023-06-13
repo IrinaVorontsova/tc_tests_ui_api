@@ -1,30 +1,22 @@
 from constants.read_env import ReadEnv
+from locators.web_locators import WebLocators
 
 
 class AuthorizationPage:
     def __init__(self, setup_browser):
         self.setup_browser = setup_browser
-        self.first_name = self.setup_browser.element(PageLocators.first_name)
-        self.last_name = self.setup_browser.element(PageLocators.last_name)
-        self.email = self.setup_browser.element(PageLocators.email)
-        self.gender = self.setup_browser.element(PageLocators.gender_other)
-        self.phone = self.setup_browser.element(PageLocators.phone)
-        self.hobby_one = self.setup_browser.element(PageLocators.hobby_field)
-        self.hobby_two = self.setup_browser.element(PageLocators.hobby_choose)
-        self.photo = self.setup_browser.element(PageLocators.photo)
-        self.address = self.setup_browser.element(PageLocators.address)
-        self.state = self.setup_browser.element(PageLocators.state_choose)
-        self.city = self.setup_browser.element(PageLocators.city_choose)
-        self.submit = self.setup_browser.element(PageLocators.submit)
+        self.vk_header = self.setup_browser.element(WebLocators.exit_vk_text)
+        self.login = self.setup_browser.element(WebLocators.exit_vk_text)
+        self.check_box = self.setup_browser.element(WebLocators.check_box)
+        self.exit = self.setup_browser.element(WebLocators.exit)
+        self.enter_password = self.setup_browser(WebLocators.enter_password)
+        self.password = self.setup_browser(WebLocators.password)
+        self.continue_ = self.setup_browser(WebLocators.continue_)
 
     def open_browser(self):
         self.setup_browser.open(ReadEnv.URL)
         return self
 
-
-    def open_browser(self):
-        self.setup_browser.open(PageLocators.URL)
-        return self
 
     def _set_first_name(self, first_name):
         self.first_name.should(be.blank).type(first_name)
