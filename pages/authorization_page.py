@@ -44,7 +44,7 @@ class AuthorizationPage:
     def authorization(self, vk_header, authorization, check_password):
         self.check_page(vk_header)
         self.get_login(authorization.login)
-        self.check_box()
+        self.check_box_click()
         self.exit_click()
         self.enter_password(check_password)
         self.get_password(authorization.password)

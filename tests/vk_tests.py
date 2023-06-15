@@ -19,5 +19,5 @@ class TestsVK:
             registration.open_browser(ReadEnv.URL)
 
         with allure.step("Passed data for authorization"):
-            registration.authorization(ReadEnv.VK_HEADER, user, ReadEnv.CHECK_PASSWORD)
+            registration.authorization(vk_header=ReadEnv.VK_HEADER, authorization=user, check_password=ReadEnv.CHECK_PASSWORD)
 
