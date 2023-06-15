@@ -8,3 +8,6 @@ class ReadEnv:
     URL = getenv("URL")
     LOGIN = getenv("LOGIN")
     PASSWORD = getenv("PASSWORD}")
+    VK_HEADER = getenv("VK_HEADER")
+    CHECK_PASSWORD = getenv("CHECK_PASSWORD")
+
