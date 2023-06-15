@@ -1,14 +1,14 @@
 import pytest
 from appium import webdriver as MD
+#from selene.support.shared import browser
 import os
 from dotenv import load_dotenv
 from selene import browser
-from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from utils import attach
 
 from utils.data_for_capabilities import apk_path
-#удалить под селенид
+# удалить под селенид
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 
@@ -27,22 +27,14 @@ def mobile_driver():
     mobile_driver.quit()
 
 
-DEFAULT_BROWSER_VERSION = "100.0"
-
-
 @pytest.fixture(scope="session")
 def setup_browser():
-    driver_service = Service(ChromeDriverManager().install())
-    driver = WD.Chrome(service=driver_service)
-    driver.maximize_window()
-    yield driver
-    driver.quit()
+    browser.config.window_width = 1600
+    browser.config.window_height = 1024
+    yield browser
+    browser.close()
 
-
-
-
-
-
+# DEFAULT_BROWSER_VERSION = "100.0"
 # def pytest_addoption(parser):
 #     parser.addoption(
 #         '--browser_version',

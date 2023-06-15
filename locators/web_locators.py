@@ -1,6 +1,6 @@
 
 class WebLocators:
-    exit_vk_text = "class='VkIdForm__header'" #gettext Вход ВКонтакте
+    exit_vk_text = "[class='VkIdForm__header']" #gettext Вход ВКонтакте
     login = "#index_email"
     check_box = "[class='VkIdCheckbox__checkboxOn']"
     exit = "[class='FlatButton__in']"

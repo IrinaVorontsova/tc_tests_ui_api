@@ -11,12 +11,12 @@ class AuthorizationPage:
         self.login = self.setup_browser.element(WebLocators.exit_vk_text)
         self.check_box = self.setup_browser.element(WebLocators.check_box)
         self.exit = self.setup_browser.element(WebLocators.exit)
-        self.enter_password = self.setup_browser(WebLocators.enter_password)
-        self.password = self.setup_browser(WebLocators.password)
-        self.continue_ = self.setup_browser(WebLocators.continue_)
+        self.enter_password = self.setup_browser.element(WebLocators.enter_password)
+        self.password = self.setup_browser.element(WebLocators.password)
+        self.continue_ = self.setup_browser.element(WebLocators.continue_)
 
-    def open_browser(self):
-        self.setup_browser.open(ReadEnv.URL)
+    def open_browser(self, URL):
+        self.setup_browser.open(URL)
         return self
 
     def check_page(self, vk_header):
