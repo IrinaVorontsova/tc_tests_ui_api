@@ -1,5 +1,6 @@
 
 class WebLocators:
+    main_logo="[class=[class='logo']]"
     #exit_vk_text = "[class='VkIdForm__header']" #gettext Вход ВКонтакте
     exit_vk_text="[class='msg_text']"
     login = "#index_email"
