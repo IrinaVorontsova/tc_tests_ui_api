@@ -1,6 +1,14 @@
 
 class WebLocators:
+    @staticmethod
+    def city_choose(city):
+        return f"//*[@class='city__list']//*[contains(text(), '{city}')]"
+
     main_logo = "[class=[class='logo']]"
+    city_spb = "[class='location1-popup__btn1']"
+    city_other = "[class='location1-popup__btn2 js-location1']"
+    city_check = "[class='location1__link js-location1']"
+    title_page = "[class='title__container']"
     menu = "[class='navigation__item  navigation__item--menu']"
     delivery = "//header//*[contains(text(), 'Доставка')]"
     promos = "//header//*[contains(text(), 'Акции')][1]"
@@ -10,6 +18,7 @@ class WebLocators:
     vacancies = "//header//*[contains(text(), 'Вакансии')]"
     franchise = "//header//*[contains(text(), 'Франшиза')]"
     home_cooking = "//header//*[contains(text(), 'Домашняя')][1]"
+    cooking_title = "[class='content-bg__title']"
 
     #exit_vk_text = "[class='VkIdForm__header']" #gettext Вход ВКонтакте
     exit_vk_text="[class='msg_text']"

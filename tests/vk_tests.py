@@ -1,7 +1,7 @@
 import allure
 
 from constants.read_env import ReadEnv
-from models.authorisation_model import Authorization
+from models.tabs_model import TabsModel
 from pages.start_page import StartPage
 
 
@@ -17,7 +17,7 @@ class TestsVK:
 
         with allure.step("Open test urls"):
             registration.open_browser(ReadEnv.URL)
-            registration.check_tabs(ReadEnv.MAIN_PAGE)
+            registration.check_tabs(ReadEnv.MAIN_PAGE, ReadEnv.SPB, ReadEnv.MENU_TITLE, ReadEnv.DELIVERY_TITLE)
 
 
         # with allure.step("Passed data for authorization"):

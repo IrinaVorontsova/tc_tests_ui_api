@@ -7,8 +7,15 @@ class ReadEnv:
 
     URL = getenv("URL")
     MAIN_PAGE = getenv("MAIN_PAGE")
-    LOGIN = getenv("LOGIN")
-    PASSWORD = getenv("PASSWORD}")
-    VK_HEADER = getenv("VK_HEADER")
-    CHECK_PASSWORD = getenv("CHECK_PASSWORD")
+    SPB = getenv("SPB")
+    MSK = getenv("MSK")
+    PTZ = getenv("PTZ")
+    VLN = getenv("VLN")
+    MENU_TITLE = getenv("MENU_TITLE")
+    DELIVERY_TITLE = getenv("DELIVERY_TITLE")
+    PROMOS_TITLE = getenv("PROMOS_TITLE")
+    NEWS_TITLE = getenv("NEWS_TITLE")
+    ADDRESSES_TITLE = getenv("ADDRESSES_TITLE")
+    COOKING = getenv("COOKING")
+
 
