@@ -69,16 +69,26 @@ class StartPage:
 
         list_handles = self.setup_browser.driver().window_handles
 
-        for handle in list_handles:
-            if handle != old_window:
-                self.setup_browser.driver().switch_to.window(handle)
-                self.banquet.should(have.text(banquet))
-                self.setup_browser.close()
+        if list_handles[0] == old_window:
+            new_window = list_handles[1]
+        else:
+            new_window = list_handles[0]
+
+        self.setup_browser.driver().switch_to.window(new_window)
+        self.banquet.should(have.text(banquet))
+        self.setup_browser.close()
+        #self.setup_browser.driver().switch_to.window(old_window)
+
+        # for handle in list_handles:
+        #     if handle != old_window:
+        #         self.setup_browser.driver().switch_to.window(handle)
+        #         self.banquet.should(have.text(banquet))
+        #         self.setup_browser.close()
 
         try:
             self.setup_browser.driver().switch_to.window(old_window)
         except NoSuchWindowException:
-            print("This is new", NoSuchWindowException)
+            self.open_browser(ReadEnv.URL)
 
     def check_vacancies(self):
         self.vacancies.click()
