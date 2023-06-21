@@ -3,6 +3,7 @@ from selenium.common import NoSuchWindowException
 
 from constants.read_env import ReadEnv
 from locators.web_locators import WebLocators
+from utils.switch_to_window import SwitchToWindow
 
 
 class StartPage:
@@ -25,7 +26,7 @@ class StartPage:
         self.cooking_title = self.setup_browser.element(WebLocators.cooking_title)
 
     def open_browser(self, URL):
-        self.setup_browser.open_url(URL)
+        self.setup_browser.open(URL)
         return self
 
     def check_logo(self, main_page):
@@ -33,8 +34,9 @@ class StartPage:
         return self
 
     def choose_city(self, city):
-        # self.other_city.click()
-        # self.setup_browser.element(WebLocators.city_choose(city)).click()
+        self.other_city.click()
+        self.setup_browser.element(WebLocators.city_choose(city))\
+            .should(have.text(city)).click()
         self.city_check.should(have.text(city))
         return self
 
@@ -64,31 +66,41 @@ class StartPage:
         return self
 
     def check_banquets(self, banquet):
-        old_window = self.setup_browser.driver().current_window_handle
-        self.banquets.click()
 
-        list_handles = self.setup_browser.driver().window_handles
+        SwitchToWindow.switch_to_windows_selene(self.setup_browser, self.banquet, banquet)
 
-        if list_handles[0] == old_window:
-            new_window = list_handles[1]
-        else:
-            new_window = list_handles[0]
+        # try:
+        #     SwitchToWindow.switch_new_window(self.setup_browser, self.banquet, banquet)
+        # except NoSuchWindowException:
+        #     self.open_browser(ReadEnv.URL)
+        #     self.choose_city(ReadEnv.SPB)
 
-        self.setup_browser.driver().switch_to.window(new_window)
-        self.banquet.should(have.text(banquet))
-        self.setup_browser.close()
-        #self.setup_browser.driver().switch_to.window(old_window)
 
-        # for handle in list_handles:
-        #     if handle != old_window:
-        #         self.setup_browser.driver().switch_to.window(handle)
-        #         self.banquet.should(have.text(banquet))
-        #         self.setup_browser.close()
 
-        try:
-            self.setup_browser.driver().switch_to.window(old_window)
-        except NoSuchWindowException:
-            self.open_browser(ReadEnv.URL)
+
+      # #  old_window = self.setup_browser.driver().current_window_handle
+      #   self.banquets.click()
+      #
+      #   # list_handles = self.setup_browser.driver().window_handles
+      #   #
+      #   # if list_handles[0] == old_window:
+      #   #     new_window = list_handles[1]
+      #   # else:
+      #   #     new_window = list_handles[0]
+      #
+      #   self.setup_browser.switch_to_next_tab()
+      #   self.banquet.should(have.text(banquet))
+      #   self.setup_browser.close_current_tab()
+      #   self.setup_browser.switch_to_previous_tab()
+      #
+      #   # self.setup_browser.driver().switch_to.window(new_window)
+      #   # self.banquet.should(have.text(banquet))
+      #   # self.setup_browser.close()
+      #   #
+      #   # try:
+      #   #     self.setup_browser.driver().switch_to.window(old_window)
+      #   # except NoSuchWindowException:
+      #   #     self.open_browser(ReadEnv.URL)
 
     def check_vacancies(self):
         self.vacancies.click()

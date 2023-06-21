@@ -1,7 +1,11 @@
-class SwitchToWindow:
+from selene import have
+from selenium.common import NoSuchWindowException
 
-    def __init__(self, setup_browser):
-        self.setup_browser = setup_browser
+from constants.read_env import ReadEnv
+from pages.start_page import StartPage
+
+
+class SwitchToWindow:
 
     @staticmethod
     def get_main_window(setup_browser):
@@ -11,10 +15,31 @@ class SwitchToWindow:
     def get_all_window(setup_browser):
         return setup_browser.window_handles
 
-    def switch_new_window(self, setup_browser):
-        main_window = self.get_main_window(setup_browser)
-        list_handles = self.get_all_window(setup_browser)
+    @staticmethod
+    def switch_new_window(setup_browser, element, text):
 
-        for handle in list_handles:
-            if(handle != main_window):
-                setup_browser.switch_to.window(handle)
+        old_window = setup_browser.driver().current_window_handle
+        element.click()
+
+        list_handles = setup_browser.driver().window_handles
+
+        if list_handles[0] == old_window:
+            new_window = list_handles[1]
+        else:
+            new_window = list_handles[0]
+
+        setup_browser.driver().switch_to.window(new_window)
+        element.should(have.text(text))
+        setup_browser.close()
+
+        setup_browser.driver().switch_to.window(old_window)
+
+    @staticmethod
+    def switch_to_windows_selene(setup_browser, element, text):
+        element.click()
+        setup_browser.switch_to_next_tab()
+        element.should(have.text(text))
+        setup_browser.close_current_tab()
+        setup_browser.switch_to_previous_tab()
+
+

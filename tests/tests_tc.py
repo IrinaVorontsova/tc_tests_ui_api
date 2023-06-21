@@ -5,8 +5,8 @@ from models.tabs_model import TabsModel
 from pages.start_page import StartPage
 
 
-class TestsVK:
-    def test_vk_ui(self, setup_browser):
+class TestsTC:
+    def test_tc_ui(self, setup_browser):
         # with allure.step("Authorization data"):
         #     user = Authorization(
         #         login=ReadEnv.LOGIN,
