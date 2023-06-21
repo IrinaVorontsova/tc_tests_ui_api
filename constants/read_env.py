@@ -16,6 +16,7 @@ class ReadEnv:
     PROMOS_TITLE = getenv("PROMOS_TITLE")
     NEWS_TITLE = getenv("NEWS_TITLE")
     ADDRESSES_TITLE = getenv("ADDRESSES_TITLE")
+    BANQUET = getenv("BANQUET")
     COOKING = getenv("COOKING")
 
 

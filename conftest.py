@@ -1,9 +1,9 @@
 import pytest
 from appium import webdriver as MD
-#from selene.support.shared import browser
 import os
 from dotenv import load_dotenv
 from selene import browser
+from selene import config
 from selenium.webdriver.chrome.options import Options
 from utils import attach
 
@@ -29,10 +29,10 @@ def mobile_driver():
 
 @pytest.fixture(scope="session")
 def setup_browser():
-    browser.config.window_width = 1600
-    browser.config.window_height = 1024
+    config.window_width = 1600
+    config.window_height = 1024
     yield browser
-    browser.close()
+    browser.quit()
 
 # DEFAULT_BROWSER_VERSION = "100.0"
 # def pytest_addoption(parser):

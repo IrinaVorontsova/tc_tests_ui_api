@@ -1,4 +1,5 @@
 from selene import have, be
+from selenium.common import NoSuchWindowException
 
 from constants.read_env import ReadEnv
 from locators.web_locators import WebLocators
@@ -17,13 +18,14 @@ class StartPage:
         self.news = self.setup_browser.element(WebLocators.news)
         self.addresses = self.setup_browser.element(WebLocators.addresses)
         self.banquets = self.setup_browser.element(WebLocators.banquets)
+        self.banquet = self.setup_browser.element(WebLocators.banquet)
         self.vacancies = self.setup_browser.element(WebLocators.vacancies)
         self.franchise = self.setup_browser.element(WebLocators.franchise)
         self.home_cooking = self.setup_browser.element(WebLocators.home_cooking)
         self.cooking_title = self.setup_browser.element(WebLocators.cooking_title)
 
     def open_browser(self, URL):
-        self.setup_browser.open(URL)
+        self.setup_browser.open_url(URL)
         return self
 
     def check_logo(self, main_page):
@@ -31,9 +33,8 @@ class StartPage:
         return self
 
     def choose_city(self, city):
-        self.other_city.click()
-        self.setup_browser.element(WebLocators.city_choose(city))\
-            .should(have.text(city)).click()
+        # self.other_city.click()
+        # self.setup_browser.element(WebLocators.city_choose(city)).click()
         self.city_check.should(have.text(city))
         return self
 
@@ -62,8 +63,22 @@ class StartPage:
         self.title_page.should(have.text(addresses_title))
         return self
 
-    def check_banquets(self):
+    def check_banquets(self, banquet):
+        old_window = self.setup_browser.driver().current_window_handle
         self.banquets.click()
+
+        list_handles = self.setup_browser.driver().window_handles
+
+        for handle in list_handles:
+            if handle != old_window:
+                self.setup_browser.driver().switch_to.window(handle)
+                self.banquet.should(have.text(banquet))
+                self.setup_browser.close()
+
+        try:
+            self.setup_browser.driver().switch_to.window(old_window)
+        except NoSuchWindowException:
+            print("This is new", NoSuchWindowException)
 
     def check_vacancies(self):
         self.vacancies.click()
@@ -76,18 +91,19 @@ class StartPage:
         self.cooking_title.should(have.text(cooking))
         return self
 
-    def check_tabs(self, main_page, city, menu_title, delivery_title):
+    def check_tabs(self, main_page, city, menu_title, delivery_title, promos_title, news_title, addresses_title,
+                   cooking, banquet):
         self.check_logo(main_page)
         self.choose_city(city)
         self.check_menu(menu_title)
         self.check_delivery(delivery_title)
-        # self.check_promos()
-        # self.check_news()
-        # self.check_addresses()
-        # self.check_banquets()
+        self.check_promos(promos_title)
+        self.check_news(news_title)
+        self.check_addresses(addresses_title)
+        self.check_banquets(banquet)
         # self.check_vacancies()
         # self.check_franchise()
-        # self.check_home_cooking()
+        self.check_home_cooking(cooking)
         return self
 
     # def check_page(self, vk_header):

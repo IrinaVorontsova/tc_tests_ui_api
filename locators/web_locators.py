@@ -15,6 +15,7 @@ class WebLocators:
     news = "//header//*[contains(text(), 'Новости')]"
     addresses = "//header//*[contains(text(), 'Адреса')]"
     banquets = "//header//*[contains(text(), 'Банкеты')]"
+    banquet = "//div[1]/header//*[@href='#booking']"
     vacancies = "//header//*[contains(text(), 'Вакансии')]"
     franchise = "//header//*[contains(text(), 'Франшиза')]"
     home_cooking = "//header//*[contains(text(), 'Домашняя')][1]"
