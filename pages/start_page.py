@@ -1,7 +1,5 @@
 from selene import have, be
-from selenium.common import NoSuchWindowException
 
-from constants.read_env import ReadEnv
 from locators.web_locators import WebLocators
 from utils.switch_to_window import SwitchToWindow
 
@@ -11,6 +9,7 @@ class StartPage:
         self.setup_browser = setup_browser
         self.main_logo = self.setup_browser.element(WebLocators.main_logo)
         self.other_city = self.setup_browser.element(WebLocators.city_other)
+        self.city_ok = self.setup_browser.element(WebLocators.city_other)
         self.city_check = self.setup_browser.element(WebLocators.city_check)
         self.title_page = self.setup_browser.element(WebLocators.title_page)
         self.menu = self.setup_browser.element(WebLocators.menu)
@@ -37,6 +36,14 @@ class StartPage:
         self.other_city.click()
         self.setup_browser.element(WebLocators.city_choose(city))\
             .should(have.text(city)).click()
+        self.city_check.should(have.text(city))
+        return self
+
+    def choose_city_other(self, city):
+        self.other_city.click()
+        self.setup_browser.element(WebLocators.city_choose(city)) \
+            .should(have.text(city)).click()
+        self.city_ok.click()
         self.city_check.should(have.text(city))
         return self
 
@@ -113,19 +120,23 @@ class StartPage:
         self.cooking_title.should(have.text(cooking))
         return self
 
-    def check_tabs(self, main_page, city, menu_title, delivery_title, promos_title, news_title, addresses_title,
-                   cooking, banquet):
-        self.check_logo(main_page)
-        self.choose_city(city)
-        self.check_menu(menu_title)
-        self.check_delivery(delivery_title)
-        self.check_promos(promos_title)
-        self.check_news(news_title)
-        self.check_addresses(addresses_title)
-        self.check_banquets(banquet)
-        # self.check_vacancies()
-        # self.check_franchise()
-        self.check_home_cooking(cooking)
+    def check_main_tabs_spb(self, main_tabs_spb):
+        self.check_logo(main_tabs_spb.main_page)
+        self.choose_city(main_tabs_spb.city)
+        self.check_menu(main_tabs_spb.menu_title)
+        self.check_delivery(main_tabs_spb.delivery_title)
+        self.check_promos(main_tabs_spb.promos_title)
+        self.check_news(main_tabs_spb.news_title)
+        self.check_addresses(main_tabs_spb.addresses_title)
+        self.check_home_cooking(main_tabs_spb.cooking)
+        return self
+
+    def check_main_tabs_city_other(self, main_tabs_city_other):
+        self.check_logo(main_tabs_city_other.main_page)
+        self.choose_city_other(main_tabs_city_other.city)
+        self.check_menu(main_tabs_city_other.menu_title)
+        self.check_promos(main_tabs_city_other.promos_title)
+        self.check_news(main_tabs_city_other.news_title)
         return self
 
     # def check_page(self, vk_header):

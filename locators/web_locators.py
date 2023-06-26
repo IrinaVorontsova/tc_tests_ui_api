@@ -6,6 +6,7 @@ class WebLocators:
 
     main_logo = "[class=[class='logo']]"
     city_spb = "[class='location1-popup__btn1']"
+    city_yes = "//*[contains(text(), 'Да')]"
     city_other = "[class='location1-popup__btn2 js-location1']"
     city_check = "[class='location1__link js-location1']"
     title_page = "[class='title__container']"

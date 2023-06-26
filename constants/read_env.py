@@ -18,5 +18,7 @@ class ReadEnv:
     ADDRESSES_TITLE = getenv("ADDRESSES_TITLE")
     BANQUET = getenv("BANQUET")
     COOKING = getenv("COOKING")
+    VACANCIES = getenv("VACANCIES")
+    FRANCHISE = getenv("FRANCHISE")
 
 

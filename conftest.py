@@ -2,8 +2,8 @@ import pytest
 from appium import webdriver as MD
 import os
 from dotenv import load_dotenv
-from selene import browser
-from selene import config
+from selene.support.shared import browser
+
 from selenium.webdriver.chrome.options import Options
 from utils import attach
 
@@ -27,10 +27,10 @@ def mobile_driver():
     mobile_driver.quit()
 
 
-@pytest.fixture(scope="session")
+@pytest.fixture(scope="function")
 def setup_browser():
-    config.window_width = 1600
-    config.window_height = 1024
+    browser.config.window_width = 1600
+    browser.config.window_height = 1024
     yield browser
     browser.quit()
 

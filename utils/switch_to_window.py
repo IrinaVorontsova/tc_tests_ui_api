@@ -1,8 +1,4 @@
 from selene import have
-from selenium.common import NoSuchWindowException
-
-from constants.read_env import ReadEnv
-from pages.start_page import StartPage
 
 
 class SwitchToWindow:
