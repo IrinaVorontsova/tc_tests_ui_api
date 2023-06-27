@@ -13,12 +13,15 @@ class ReadEnv:
     VLN = getenv("VLN")
     MENU_TITLE = getenv("MENU_TITLE")
     DELIVERY_TITLE = getenv("DELIVERY_TITLE")
-    PROMOS_TITLE = getenv("PROMOS_TITLE")
+    PROMOS_URL = getenv("PROMOS_URL")
     NEWS_TITLE = getenv("NEWS_TITLE")
     ADDRESSES_TITLE = getenv("ADDRESSES_TITLE")
     BANQUET = getenv("BANQUET")
     COOKING = getenv("COOKING")
     VACANCIES = getenv("VACANCIES")
     FRANCHISE = getenv("FRANCHISE")
+    SUSHI = getenv("SUSHI")
+    POLLS = getenv("POLLS")
+    SETS = getenv("SETS")
 
 

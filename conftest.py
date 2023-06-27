@@ -27,7 +27,7 @@ def mobile_driver():
     mobile_driver.quit()
 
 
-@pytest.fixture(scope="function")
+@pytest.fixture(scope="session")
 def setup_browser():
     browser.config.window_width = 1600
     browser.config.window_height = 1024

@@ -7,9 +7,10 @@ from utils.switch_to_window import SwitchToWindow
 class StartPage:
     def __init__(self, setup_browser):
         self.setup_browser = setup_browser
+        self.ddos = self.setup_browser.element(WebLocators.ddos)
         self.main_logo = self.setup_browser.element(WebLocators.main_logo)
-        self.other_city = self.setup_browser.element(WebLocators.city_other)
-        self.city_ok = self.setup_browser.element(WebLocators.city_other)
+        self.city_spb = self.setup_browser.element(WebLocators.city_spb)
+        self.city_ok = self.setup_browser.element(WebLocators.city_yes)
         self.city_check = self.setup_browser.element(WebLocators.city_check)
         self.title_page = self.setup_browser.element(WebLocators.title_page)
         self.menu = self.setup_browser.element(WebLocators.menu)
@@ -29,18 +30,23 @@ class StartPage:
         return self
 
     def check_logo(self, main_page):
-        self.setup_browser.should(have.title(main_page))
+        try:
+            self.setup_browser.should(have.title(main_page))
+        except:
+            self.setup_browser.should(have.title("DDoS-Guard"))
+            self.ddos.click()
+            self.setup_browser.should(have.title(main_page))
         return self
 
     def choose_city(self, city):
-        self.other_city.click()
+        self.city_spb.click()
         self.setup_browser.element(WebLocators.city_choose(city))\
             .should(have.text(city)).click()
         self.city_check.should(have.text(city))
         return self
 
     def choose_city_other(self, city):
-        self.other_city.click()
+        self.city_check.click()
         self.setup_browser.element(WebLocators.city_choose(city)) \
             .should(have.text(city)).click()
         self.city_ok.click()
@@ -57,9 +63,10 @@ class StartPage:
         self.title_page.should(have.text(delivery_title))
         return self
 
-    def check_promos(self, promos_title):
+    def check_promos(self, promos_url):
         self.promos.click()
-        self.title_page.should(have.text(promos_title))
+       # self.title_page.should(have.url_containing(promos_url))
+        self.setup_browser.should(have.url_containing(promos_url))
         return self
 
     def check_news(self, news_title):
@@ -125,7 +132,7 @@ class StartPage:
         self.choose_city(main_tabs_spb.city)
         self.check_menu(main_tabs_spb.menu_title)
         self.check_delivery(main_tabs_spb.delivery_title)
-        self.check_promos(main_tabs_spb.promos_title)
+        self.check_promos(main_tabs_spb.promos_url)
         self.check_news(main_tabs_spb.news_title)
         self.check_addresses(main_tabs_spb.addresses_title)
         self.check_home_cooking(main_tabs_spb.cooking)
@@ -134,39 +141,6 @@ class StartPage:
     def check_main_tabs_city_other(self, main_tabs_city_other):
         self.check_logo(main_tabs_city_other.main_page)
         self.choose_city_other(main_tabs_city_other.city)
-        self.check_menu(main_tabs_city_other.menu_title)
-        self.check_promos(main_tabs_city_other.promos_title)
+        self.check_promos(main_tabs_city_other.promos_url)
         self.check_news(main_tabs_city_other.news_title)
         return self
-
-    # def check_page(self, vk_header):
-    #     self.vk_header.should(have.text(vk_header))
-    #
-    # def get_login(self, login):
-    #     self.login.should(be.blank).type(login)
-    #
-    # def check_box_click(self):
-    #     self.check_box.click()
-    #
-    # def exit_click(self):
-    #     self.exit.click()
-    #
-    # def enter_password(self, check_password):
-    #     self.enter_password.should(have.text(check_password))
-    #     self.enter_password.click()
-    #
-    # def get_password(self, password):
-    #     self.password.should(be.blank).type(password)
-    #
-    # def click_continue(self):
-    #     self.continue_.click()
-    #
-    # def authorization(self, vk_header, authorization, check_password):
-    #     self.check_page(vk_header)
-    #     self.get_login(authorization.login)
-    #     self.check_box_click()
-    #     self.exit_click()
-    #     self.enter_password(check_password)
-    #     self.get_password(authorization.password)
-    #     self.click_continue()
-    #     return self

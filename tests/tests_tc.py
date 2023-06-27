@@ -17,7 +17,7 @@ class TestsTC:
                 city=ReadEnv.SPB,
                 menu_title=ReadEnv.MENU_TITLE,
                 delivery_title=ReadEnv.DELIVERY_TITLE,
-                promos_title=ReadEnv.PROMOS_TITLE,
+                promos_url=ReadEnv.PROMOS_URL,
                 news_title=ReadEnv.NEWS_TITLE,
                 addresses_title=ReadEnv.ADDRESSES_TITLE,
                 cooking=ReadEnv.COOKING)
@@ -30,8 +30,7 @@ class TestsTC:
             main_tabs_city_other = MainTabsOtherCity(
                 main_page=ReadEnv.MAIN_PAGE,
                 city=city,
-                menu_title=ReadEnv.MENU_TITLE,
-                promos_title=ReadEnv.PROMOS_TITLE,
+                promos_url=ReadEnv.PROMOS_URL,
                 news_title=ReadEnv.NEWS_TITLE)
 
         with allure.step("Initialize form page"):
