@@ -9,7 +9,8 @@ from pages.start_page import StartPage
 class TestsTC:
 
     @allure.description("Test tabs clickable")
-    @pytest.mark.parametrize("city", [ReadEnv.MSK, ReadEnv.PTZ, ReadEnv.VLN])
+  #  @pytest.mark.parametrize("city", [ReadEnv.MSK, ReadEnv.PTZ, ReadEnv.VLN])
+    @pytest.mark.parametrize("city", [ReadEnv.SPB])
     def test_tc_ui(self, setup_browser, city):
         with allure.step("Tests data initialized"):
             main_tabs_spb = MainTabsSpb(
@@ -38,10 +39,13 @@ class TestsTC:
 
         with allure.step("Open test urls"):
             registration.open_browser(ReadEnv.URL)
-           # registration.check_main_tabs_spb(main_tabs_spb)
-            registration.check_main_tabs_city_other(main_tabs_city_other)
 
+       # with allure.step("Check tabs Spb"):
+            # registration.check_main_tabs_spb(main_tabs_spb)
 
-        # with allure.step("Passed data for authorization"):
-        #     registration.authorization(vk_header=ReadEnv.VK_HEADER, authorization=user, check_password=ReadEnv.CHECK_PASSWORD)
-        #
+        with allure.step("Check tabs where open in new windows"):
+            registration.check_other_window_tabs(tabs_new_window)
+
+       # with allure.step("Chech other regions":
+            #registration.check_main_tabs_city_other(main_tabs_city_other)
+

@@ -34,7 +34,7 @@ class SwitchToWindow:
     def switch_to_windows_selene(setup_browser, element, text):
         element.click()
         setup_browser.switch_to_next_tab()
-        element.should(have.text(text))
+        setup_browser.should(have.url_containing(text))
         setup_browser.close_current_tab()
         setup_browser.switch_to_previous_tab()
 

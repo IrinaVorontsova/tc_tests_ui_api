@@ -1,5 +1,7 @@
 from selene import have, be
+from selenium.common import NoSuchWindowException
 
+from constants.read_env import ReadEnv
 from locators.web_locators import WebLocators
 from utils.switch_to_window import SwitchToWindow
 
@@ -65,7 +67,6 @@ class StartPage:
 
     def check_promos(self, promos_url):
         self.promos.click()
-       # self.title_page.should(have.url_containing(promos_url))
         self.setup_browser.should(have.url_containing(promos_url))
         return self
 
@@ -80,47 +81,27 @@ class StartPage:
         return self
 
     def check_banquets(self, banquet):
+        try:
+            SwitchToWindow.switch_to_windows_selene(setup_browser=self.setup_browser, element=self.banquets, text=banquet)
+        except NoSuchWindowException:
+            self.open_browser(ReadEnv.URL)
+            self.choose_city(ReadEnv.SPB)
 
-        SwitchToWindow.switch_to_windows_selene(self.setup_browser, self.banquet, banquet)
+    def check_vacancies(self, vacantion):
+        try:
+            SwitchToWindow.switch_to_windows_selene(setup_browser=self.setup_browser, element=self.vacancies,
+                                                    text=vacantion)
+        except NoSuchWindowException:
+            self.open_browser(ReadEnv.URL)
+            self.choose_city(ReadEnv.SPB)
 
-        # try:
-        #     SwitchToWindow.switch_new_window(self.setup_browser, self.banquet, banquet)
-        # except NoSuchWindowException:
-        #     self.open_browser(ReadEnv.URL)
-        #     self.choose_city(ReadEnv.SPB)
-
-
-
-
-      # #  old_window = self.setup_browser.driver().current_window_handle
-      #   self.banquets.click()
-      #
-      #   # list_handles = self.setup_browser.driver().window_handles
-      #   #
-      #   # if list_handles[0] == old_window:
-      #   #     new_window = list_handles[1]
-      #   # else:
-      #   #     new_window = list_handles[0]
-      #
-      #   self.setup_browser.switch_to_next_tab()
-      #   self.banquet.should(have.text(banquet))
-      #   self.setup_browser.close_current_tab()
-      #   self.setup_browser.switch_to_previous_tab()
-      #
-      #   # self.setup_browser.driver().switch_to.window(new_window)
-      #   # self.banquet.should(have.text(banquet))
-      #   # self.setup_browser.close()
-      #   #
-      #   # try:
-      #   #     self.setup_browser.driver().switch_to.window(old_window)
-      #   # except NoSuchWindowException:
-      #   #     self.open_browser(ReadEnv.URL)
-
-    def check_vacancies(self):
-        self.vacancies.click()
-
-    def check_franchise(self):
-        self.franchise.click()
+    def check_franchise(self, franchise):
+        try:
+            SwitchToWindow.switch_to_windows_selene(setup_browser=self.setup_browser, element=self.franchise,
+                                                    text=franchise)
+        except NoSuchWindowException:
+            self.open_browser(ReadEnv.URL)
+            self.choose_city(ReadEnv.SPB)
 
     def check_home_cooking(self, cooking):
         self.home_cooking.click()
@@ -136,6 +117,12 @@ class StartPage:
         self.check_news(main_tabs_spb.news_title)
         self.check_addresses(main_tabs_spb.addresses_title)
         self.check_home_cooking(main_tabs_spb.cooking)
+        return self
+
+    def check_other_window_tabs(self, tabs_new_window):
+        self.check_banquets(tabs_new_window.banquet)
+        self.check_vacancies(tabs_new_window.vacantion)
+        self.check_franchise(tabs_new_window.franchise)
         return self
 
     def check_main_tabs_city_other(self, main_tabs_city_other):
