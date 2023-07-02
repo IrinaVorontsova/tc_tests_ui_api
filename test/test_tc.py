@@ -7,7 +7,7 @@ from pages.menu_page import MenuPage
 from pages.start_page import StartPage
 
 
-class TestsTC:
+class TestTC:
 
     @allure.description("Test tabs clickable")
     @pytest.mark.parametrize("city", [ReadEnv.MSK, ReadEnv.PTZ, ReadEnv.VLN])
