@@ -9,8 +9,9 @@ class WebLocators:
         return f"//span[contains(text(),'{category}')]"
 
     ddos = "#checkbox"
-    main_logo = "[class=[class='logo']]"
-    city_spb = "[class='location1-popup__btn1']"
+    main_logo = "[class='logo']"
+    main = "//*[contains(text(), 'Главная')]"
+    city_spb = "[class='location1__link js-location1']"
     city_yes = "//*[contains(text(), 'Да')]"
     city_other = "[class='location1-popup__btn2 js-location1']"
     city_check = "[class='location1__link js-location1']"

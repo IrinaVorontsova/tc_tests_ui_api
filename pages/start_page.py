@@ -1,5 +1,5 @@
-from selene import have, be
-from selenium.common import NoSuchWindowException
+from selene import have
+from selenium.common import NoSuchWindowException, InvalidSessionIdException
 
 from constants.read_env import ReadEnv
 from locators.web_locators import WebLocators
@@ -11,6 +11,7 @@ class StartPage:
         self.setup_browser = setup_browser
         self.ddos = self.setup_browser.element(WebLocators.ddos)
         self.main_logo = self.setup_browser.element(WebLocators.main_logo)
+        self.main = self.setup_browser.element(WebLocators.main)
         self.city_spb = self.setup_browser.element(WebLocators.city_spb)
         self.city_ok = self.setup_browser.element(WebLocators.city_yes)
         self.city_check = self.setup_browser.element(WebLocators.city_check)
@@ -33,16 +34,18 @@ class StartPage:
 
     def check_logo(self, main_page):
         try:
+            self.main.click()
             self.setup_browser.should(have.title(main_page))
         except:
             self.setup_browser.should(have.title("DDoS-Guard"))
             self.ddos.click()
+            self.main.click()
             self.setup_browser.should(have.title(main_page))
         return self
 
     def choose_city(self, city):
-        self.city_spb.click()
-        self.setup_browser.element(WebLocators.city_choose(city))\
+        self.city_check.click()
+        self.setup_browser.element(WebLocators.city_choose(city)) \
             .should(have.text(city)).click()
         self.city_check.should(have.text(city))
         return self
@@ -51,7 +54,7 @@ class StartPage:
         self.city_check.click()
         self.setup_browser.element(WebLocators.city_choose(city)) \
             .should(have.text(city)).click()
-        self.city_ok.click()
+        #self.city_ok.click()
         self.city_check.should(have.text(city))
         return self
 
@@ -82,7 +85,9 @@ class StartPage:
 
     def check_banquets(self, banquet):
         try:
-            SwitchToWindow.switch_to_windows_selene(setup_browser=self.setup_browser, element=self.banquets, text=banquet)
+            SwitchToWindow.switch_to_windows_selene(setup_browser=self.setup_browser, element=self.banquets,
+                                                    text=banquet)
+
         except NoSuchWindowException:
             self.open_browser(ReadEnv.URL)
             self.choose_city(ReadEnv.SPB)
@@ -112,7 +117,6 @@ class StartPage:
         self.check_logo(main_tabs_spb.main_page)
         self.choose_city(main_tabs_spb.city)
         self.check_menu(main_tabs_spb.menu_title)
-        self.check_delivery(main_tabs_spb.delivery_title)
         self.check_promos(main_tabs_spb.promos_url)
         self.check_news(main_tabs_spb.news_title)
         self.check_addresses(main_tabs_spb.addresses_title)

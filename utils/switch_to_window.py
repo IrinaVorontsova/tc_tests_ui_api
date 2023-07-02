@@ -35,7 +35,7 @@ class SwitchToWindow:
         element.click()
         setup_browser.switch_to_next_tab()
         setup_browser.should(have.url_containing(text))
-        setup_browser.close_current_tab()
+        #setup_browser.close_current_tab()
         setup_browser.switch_to_previous_tab()
 
 

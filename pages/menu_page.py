@@ -1,6 +1,6 @@
 import random
 
-from selene import have, be
+from selene import have
 
 from locators.web_locators import WebLocators
 
