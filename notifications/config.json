@@ -5,8 +5,8 @@
     "comment": "Test reports for telegram",
     "reportLink": "",
     "messenger": "telegram",
-    "language": "ru",
-    "allureFolder": "build/allure-result/",
+    "language": "en",
+    "allureFolder": "build/allure-report/",
     "enableChart": true
   },
   "telegram": {
