@@ -7,6 +7,7 @@ class WebLocators:
     @staticmethod
     def category_choose(category):
         return f"//span[contains(text(),'{category}')]"
+
     ddos = "#checkbox"
     main_logo = "[class=[class='logo']]"
     city_spb = "[class='location1-popup__btn1']"
@@ -28,4 +29,5 @@ class WebLocators:
     add_to_cart = "[class='btn  btn--red  btn--order']"
     cart = "[class='cart']"
     quantity_cart = "[class='cart__value simpleCart_quantity']"
+    remove = "[class='simpleCart_remove']"
 

@@ -21,7 +21,7 @@ class ReadEnv:
     VACANCIES = getenv("VACANCIES")
     FRANCHISE = getenv("FRANCHISE")
     SUSHI = getenv("SUSHI")
-    POLLS = getenv("POLLS")
+    ROlLS = getenv("POLLS")
     SETS = getenv("SETS")
 
 

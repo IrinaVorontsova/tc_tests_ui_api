@@ -12,6 +12,7 @@ class MainTabsSpb:
     addresses_title: str
     cooking: str
 
+
 @dataclass
 class MainTabsOtherCity:
     main_page: str
@@ -19,9 +20,15 @@ class MainTabsOtherCity:
     promos_url: str
     news_title: str
 
+
 @dataclass
 class TabsNewWindow:
     banquets: str
     vacancies: str
     franchise: str
 
+
+@dataclass
+class Menu:
+    menu_title: str
+    category: str

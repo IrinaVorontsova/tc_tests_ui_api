@@ -120,8 +120,8 @@ class StartPage:
         return self
 
     def check_other_window_tabs(self, tabs_new_window):
-        self.check_banquets(tabs_new_window.banquet)
-        self.check_vacancies(tabs_new_window.vacantion)
+        self.check_banquets(tabs_new_window.banquets)
+        self.check_vacancies(tabs_new_window.vacancies)
         self.check_franchise(tabs_new_window.franchise)
         return self
 

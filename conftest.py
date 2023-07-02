@@ -32,6 +32,7 @@ def setup_browser():
     browser.config.window_width = 1600
     browser.config.window_height = 1024
     yield browser
+
     browser.quit()
 
 # DEFAULT_BROWSER_VERSION = "100.0"
