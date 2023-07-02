@@ -1,10 +1,10 @@
 {
   "base": {
-    "logo": "",
     "project": "test_tc",
-    "environment": ".env",
+    "environment": "env",
     "comment": "Test reports for telegram",
-    "reportLink": "telegram",
+    "reportLink": "",
+    "messenger": "telegram",
     "language": "ru",
     "allureFolder": "build/allure-result/",
     "enableChart": true
@@ -13,38 +13,5 @@
     "token": "5907883492:AAFtg-BskOz3SGA1PKpov6WMvv53IQDkeJg",
     "chat": "152975915",
     "replyTo": ""
-  },
-  "slack": {
-    "token": "",
-    "chat": "",
-    "replyTo": ""
-  },
-  "mattermost": {
-    "url": "",
-    "token": "",
-    "chat": ""
-  },
-  "skype": {
-    "appId": "",
-    "appSecret": "",
-    "serviceUrl": "",
-    "conversationId": "",
-    "botId": "",
-    "botName": ""
-  },
-  "mail": {
-    "host": "",
-    "port": "",
-    "username": "",
-    "password": "",
-    "securityProtocol": null,
-    "from": "",
-    "recipient": ""
-  },
-  "proxy": {
-    "host": "",
-    "port": 0,
-    "username": "",
-    "password": ""
   }
 }
