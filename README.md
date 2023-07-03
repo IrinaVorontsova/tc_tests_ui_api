@@ -46,14 +46,13 @@ UI-тесты параметризированы, запускаются поо�
 
 ### Allure отчёты:
 
-### Главная страница:
-
 #### [Allure Report](https://jenkins.autotests.cloud/job/004-irin_vorontsova-tc_ui/26/allure/)
 
-### Степы:
+### Главная страница:
 
 ![Allure_MAIN](/src/allure_14.png)
 
+### Степы:
 
 ![Allure STEPS](/src/allure_steps.png)
 
