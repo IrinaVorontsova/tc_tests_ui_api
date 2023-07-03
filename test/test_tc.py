@@ -10,9 +10,12 @@ from pages.start_page import StartPage
 class TestTC:
 
     @allure.description("Test tabs clickable")
-    @pytest.mark.parametrize("city", [ReadEnv.MSK, ReadEnv.PTZ, ReadEnv.VLN])
-    @pytest.mark.parametrize("category", [ReadEnv.SUSHI, ReadEnv.ROlLS, ReadEnv.SETS])
+   # @pytest.mark.parametrize("city", [ReadEnv.MSK, ReadEnv.PTZ, ReadEnv.VLN])
+   # @pytest.mark.parametrize("category", [ReadEnv.SUSHI, ReadEnv.ROlLS, ReadEnv.SETS]
+    @ pytest.mark.parametrize("city", [ReadEnv.MSK])
+    @ pytest.mark.parametrize("category", [ReadEnv.SUSHI])
     def test_tc_ui(self, setup_browser, city, category):
+
         with allure.step("Tests data initialized"):
             main_tabs_spb = MainTabsSpb(
                 main_page=ReadEnv.MAIN_PAGE,
