@@ -46,7 +46,7 @@ UI-тесты параметризированы, запускаются поо�
 
 ### __Allure отчёты:__ 
 
-#### [Allure Report](https://jenkins.autotests.cloud/job/004-irin_vorontsova-tc_ui/25/allure/)
+#### [Allure Report](https://jenkins.autotests.cloud/job/004-irin_vorontsova-tc_ui/26/allure/)
 
 
 ![Allure_MAIN](/src/allure_14.png)
@@ -56,5 +56,4 @@ UI-тесты параметризированы, запускаются поо�
 
 Записывается видео прохождения теста
 
-<a href="https://youtu.be/N3zYjMrHVlM" target="_blank"><img src="https://youtu.be/N3zYjMrHVlM/0.jpg" 
-alt="Выполнение теста" width="240" height="180" border="10" /></a>
+![Allure Video](/src/video_test.gif)
