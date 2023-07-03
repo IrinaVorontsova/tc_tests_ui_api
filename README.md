@@ -43,7 +43,6 @@ UI-тесты параметризированы, запускаются поо�
 Настроена отправка отчета в мессенджер - telegram
 
 ![Telegram Notifications](/src/bot_report.png)
-
 ### __Allure отчёты:__ 
 
 #### [Allure Report](https://jenkins.autotests.cloud/job/004-irin_vorontsova-tc_ui/26/allure/)
@@ -56,4 +55,5 @@ UI-тесты параметризированы, запускаются поо�
 
 Записывается видео прохождения теста
 
-![Allure Video](/src/video_test.gif)
+[![IMAGE ALT TEXT](http://img.youtube.com/watch?v=N3zYjMrHVlM/0.jpg)]
+(https://www.youtube.com/watch?v=N3zYjMrHVlM "Video Title")
