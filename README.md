@@ -56,4 +56,7 @@ UI-тесты параметризированы, запускаются поо�
 
 Записывается видео прохождения теста
 
-![Allure Video](/src/11.gif)
+![Allure Video](/src/video.mp4)
+
+<a href="https://youtu.be/N3zYjMrHVlM" target="_blank"><img src="https://youtu.be/N3zYjMrHVlM/0.jpg" 
+alt="Выполнение теста" width="240" height="180" border="10" /></a>
