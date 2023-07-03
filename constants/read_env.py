@@ -23,5 +23,8 @@ class ReadEnv:
     SUSHI = getenv("SUSHI")
     ROlLS = getenv("POLLS")
     SETS = getenv("SETS")
+    EMAIL_API = getenv("EMAIL_API")
+    PASSWORD_API = getenv("PASSWORD_API")
+    URL_API = getenv("URL_API")
 
 
