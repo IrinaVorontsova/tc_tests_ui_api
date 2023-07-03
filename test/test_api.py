@@ -44,7 +44,7 @@ def test_post_register_user():
         assert isinstance(register.json()["token"], str), "Token is not string"
 
 def test_put_user():
-    with allure.step("Send request: put  user"):
+    with allure.step("Send request: put user"):
         code = 200
         id_user = 2
         update = requests.put(ReadEnv.URL_API + f"/api/users/{id_user}", data_edit_user())
