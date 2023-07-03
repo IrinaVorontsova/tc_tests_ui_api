@@ -53,7 +53,9 @@ UI-тесты параметризированы, запускаются поо�
 
 ![Allure STEPS](/src/allure_steps.png)
 
-Записывается видео прохождения теста
+В каждом отчете записывается видео прохождения теста
 
-[![IMAGE ALT TEXT](http://img.youtube.com/watch?v=N3zYjMrHVlM/0.jpg)]
-(https://www.youtube.com/watch?v=N3zYjMrHVlM "Video Title")
+## Пример видео
+
+<a href="https://www.youtube.com/watch?feature=player_embedded&v=N3zYjMrHVlM" target="_blank"><img src="http://img.youtube.com/vi/N3zYjMrHVlM/0.jpg" 
+alt="Allure video" width="240" height="180" border="10" /></a>
